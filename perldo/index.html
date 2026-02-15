@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleuriste à Saint-Éloy-les-Mines | Bouquets sur mesure & compositions florales</title>
+    <meta name="description" content="Découvrez notre fleuriste artisanale à Saint-Éloy-les-Mines. Bouquets prêts à emporter et créations personnalisées pour toutes vos occasions.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --rose-doux: #f4c2d4;
+            --rose-vif: #e88ca7;
+            --vert-sauge: #8a9a7c;
+            --vert-fonce: #556b4a;
+            --blanc-creme: #fdfcfa;
+            --gris-doux: #f5f5f3;
+            --texte-principal: #3a3a3a;
+            --texte-secondaire: #666;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: var(--texte-principal);
+            background: var(--blanc-creme);
+        }
+        
+        h1, h2, h3 {
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 252, 250, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--vert-fonce);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--texte-secondaire);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--rose-vif);
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            position: relative;
+            height: 85vh;
+            min-height: 500px;
+            max-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(244, 194, 212, 0.3), rgba(138, 154, 124, 0.3));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: white;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            margin-bottom: 2rem;
+            font-family: 'Arial', sans-serif;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            stroke: white;
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* Section commune */
+        section {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--vert-fonce);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--texte-secondaire);
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+        
+        /* À propos */
+        .a-propos {
+            background: var(--gris-doux);
+        }
+        
+        .a-propos-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .a-propos-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight {
+            color: var(--rose-vif);
+            font-style: italic;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose-doux), var(--rose-vif));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--vert-fonce);
+        }
+        
+        .service-card p {
+            color: var(--texte-secondaire);
+            line-height: 1.7;
+        }
+        
+        /* Occasions */
+        .occasions {
+            background: linear-gradient(135deg, var(--gris-doux) 0%, var(--blanc-creme) 100%);
+        }
+        
+        .occasions-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .occasion-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--rose-vif);
+            transition: all 0.3s;
+        }
+        
+        .occasion-item:hover {
+            border-left-width: 8px;
+            padding-left: 1.75rem;
+        }
+        
+        .occasion-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--vert-fonce);
+        }
+        
+        .occasion-item p {
+            color: var(--texte-secondaire);
+            font-size: 0.95rem;
+        }
+        
+        /* Galerie */
+        .galerie-placeholder {
+            background: linear-gradient(135deg, var(--rose-doux) 0%, var(--vert-sauge) 100%);
+            height: 300px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact */
+        .contact {
+            background: var(--vert-fonce);
+            color: white;
+        }
+        
+        .contact .section-title {
+            color: white;
+        }
+        
+        .contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-intro {
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-methods {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-method {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+        
+        .contact-method-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .contact-method h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-method a {
+            color: var(--rose-doux);
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-method a:hover {
+            color: white;
+        }
+        
+        .contact-method p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 0.3rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Horaires */
+        .horaires {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .horaires h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .horaires p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--texte-principal);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            section {
+                padding: 5rem 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .occasions-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .contact-methods {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .occasions-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">Perld'O</a>
+            <div class="nav-links">
+                <a href="#a-propos">À propos</a>
+                <a href="#services">Services</a>
+                <a href="#occasions">Occasions</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="hero-image.jpg" alt="Bouquet floral artisanal" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>L'art floral au cœur de Saint-Éloy-les-Mines</h1>
+            <p class="hero-subtitle">Des créations uniques qui racontent vos émotions</p>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('a-propos').scrollIntoView({behavior: 'smooth'})">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="a-propos" class="a-propos">
+        <h2 class="section-title">Une petite boutique, de grandes émotions</h2>
+        <p class="section-subtitle">Découvrez l'âme d'une fleuriste passionnée</p>
+        <div class="a-propos-content">
+            <p>
+                Nichée discrètement au cœur de Saint-Éloy-les-Mines, notre boutique est bien plus qu'un simple commerce. 
+                C'est un <span class="highlight">écrin de fraîcheur et de délicatesse</span>, où chaque fleur est choisie avec soin 
+                pour composer des bouquets qui parlent au cœur.
+            </p>
+            <p>
+                Que vous recherchiez un bouquet prêt à emporter pour illuminer votre quotidien ou une création sur mesure 
+                pour marquer un moment précieux, nous sommes là pour <span class="highlight">donner vie à vos envies florales</span>.
+            </p>
+            <p>
+                Poussez notre porte et laissez-vous charmer par l'univers poétique des fleurs.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <h2 class="section-title">Nos créations florales</h2>
+        <p class="section-subtitle">Chaque bouquet raconte une histoire</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌸</div>
+                <h3>Bouquets prêts à emporter</h3>
+                <p>
+                    Une sélection quotidienne de compositions fraîches et harmonieuses, 
+                    parfaites pour un cadeau spontané ou pour vous faire plaisir.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Créations sur mesure</h3>
+                <p>
+                    Confiez-nous vos désirs, vos couleurs préférées, vos émotions. 
+                    Nous composons un bouquet unique qui vous ressemble.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💐</div>
+                <h3>Événements spéciaux</h3>
+                <p>
+                    Mariages, anniversaires, cérémonies... Nous imaginons des compositions 
+                    florales qui subliment vos moments précieux.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Occasions -->
+    <section id="occasions" class="occasions">
+        <h2 class="section-title">Pour toutes vos occasions</h2>
+        <p class="section-subtitle">Des fleurs qui parlent à votre place</p>
+        <div class="occasions-grid">
+            <div class="occasion-item">
+                <h3>🎊 Célébrations</h3>
+                <p>Anniversaires, réussites, naissances... Partagez votre joie avec des fleurs éclatantes.</p>
+            </div>
+            <div class="occasion-item">
+                <h3>💕 Déclarations</h3>
+                <p>Amour, amitié, gratitude... Exprimez vos sentiments avec des bouquets qui touchent le cœur.</p>
+            </div>
+            <div class="occasion-item">
+                <h3>🏡 Décoration</h3>
+                <p>Apportez une touche de nature et de fraîcheur à votre intérieur avec nos compositions.</p>
+            </div>
+            <div class="occasion-item">
+                <h3>💍 Mariages</h3>
+                <p>Bouquets de mariée, compositions de table, décorations... Pour que votre jour soit inoubliable.</p>
+            </div>
+            <div class="occasion-item">
+                <h3>🌿 Deuil</h3>
+                <p>Des compositions délicates et respectueuses pour accompagner vos moments de recueillement.</p>
+            </div>
+            <div class="occasion-item">
+                <h3>🎁 Plaisir d'offrir</h3>
+                <p>Pour toutes les attentions du quotidien qui font la différence et réchauffent les cœurs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Venez nous rencontrer</h2>
+        <p class="section-subtitle">Nous serons ravis de vous accueillir</p>
+        <div class="contact-content">
+            <p class="contact-intro">
+                Que ce soit pour découvrir nos bouquets du jour, commander une création personnalisée 
+                ou simplement échanger autour de vos envies florales, nous sommes à votre écoute.
+            </p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-method-icon">📍</div>
+                    <h3>Nous visiter</h3>
+                    <p>148 rue jean jaurès<br>Saint-Éloy-les-Mines</p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">📞</div>
+                    <h3>Nous appeler</h3>
+                    <a href="tel:+33473852262">04 73 85 22 62</a>
+                    <p>Pour vos commandes</p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-method-icon">✉️</div>
+                    <h3>Nous écrire</h3>
+                    <a href="mailto:contact@perldo.fr">contact@perldo.fr</a>
+                    <p>Pour vos demandes</p>
+                </div>
+            </div>
+            
+            <div class="horaires">
+                <h3>Horaires d'ouverture</h3>
+                <p><strong>lundi : 09:00 - 12:00 | 14:00 - 19:00</p>
+                <p><strong>mardi : 09:00 - 12:00 | 14:00 - 19:00</p>
+                <p><strong>mercredi : fermé</p>
+                <p><strong>jeudi : 09:00 - 12:00 | 14:00 - 19:00</p>
+                <p><strong>vendredi : 09:00 - 12:00 | 14:00 - 19:00</p>
+                <p><strong>samedi : 09:00 - 12:00 | 14:00 - 19:00</p>
+                <p><strong>dimanche : 09:00 - 12:00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Fleuriste Saint-Éloy-les-Mines | Créé avec passion pour partager la beauté des fleurs</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Apply animation to service cards and occasion items
+        document.querySelectorAll('.service-card, .occasion-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
